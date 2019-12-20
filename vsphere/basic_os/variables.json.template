@@ -1,0 +1,15 @@
+{
+    "vcenter_server": "<vcenter url>",
+    "vcenter_username": "<username>",
+    "vcenter_password": "<password>",
+    "vcenter_datacenter": "<datacenter>",
+    "vcenter_cluster": "<cluster>",
+    "vcenter_host": "<host>",
+    "vcenter_folder": "<folder>",
+    "vcenter_datastore": "<datastore>",
+    "vcenter_network": "<network>",
+    "ssh_username": "<ssh username>",
+    "ssh_password": "<ssh password>",
+    "winrm_username": "<windows administrator username>",
+    "winrm_password": "<windows administrator password>"
+}

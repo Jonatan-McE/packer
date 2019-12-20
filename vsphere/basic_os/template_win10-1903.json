@@ -1,0 +1,53 @@
+{
+  "builders": [
+    {
+      "type": "vsphere-iso",
+      "vcenter_server": "{{user `vcenter_server`}}",
+      "username": "{{user `vcenter_username`}}",
+      "password": "{{user `vcenter_password`}}",
+      "datacenter": "{{user `vcenter_datacenter`}}",
+      "insecure_connection": "true",
+      "cluster": "{{user `vcenter_cluster`}}",
+      "folder": "{{user `vcenter_folder`}}",
+      "datastore": "{{user `vcenter_datastore`}}",
+      "network": "{{user `vcenter_network`}}",
+      "vm_name": "TEMPLATE_WIN10-1903",
+      "notes": "Windows 10 1903 Template created with Packer",
+
+      "CPUs": 2,
+      "cpu_cores": 2,
+      "RAM": 4096,
+      "RAM_reserve_all": true,
+      "disk_size": 32768,
+      "boot_order": "disk,cdrom",
+      "guest_os_type": "windows9_64Guest",
+      "disk_controller_type": "lsilogic-sas",
+      "disk_thin_provisioned": true,
+      "network_card": "vmxnet3",  
+
+      "iso_paths": [
+        "[FreeNas] Images/SW_DVD9_Win_Pro_10_1903_64BIT_English_Pro_Ent_EDU_N_MLF_X22-02890.ISO",
+        "[FreeNas] Images/windows.iso"
+      ],
+      "floppy_files": [
+        "{{template_dir}}/floppy/win10-1903/autounattend.xml",
+        "{{template_dir}}/floppy/win10-1903/setup.ps1",
+        "{{template_dir}}/floppy/win10-1903/vmtools.cmd"
+      ],
+
+      "communicator": "winrm",
+      "winrm_username": "{{user `winrm_username`}}",
+      "winrm_password": "{{user `winrm_password`}}",
+      "create_snapshot": "true",
+      "convert_to_template": "true"
+    }
+  ],
+  
+  "provisioners": [
+    {
+      "type": "windows-shell",
+      "inline": ["dir c:\\"]
+    }
+  ]
+
+}
