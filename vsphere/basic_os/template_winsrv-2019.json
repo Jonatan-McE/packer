@@ -8,6 +8,7 @@
       "datacenter": "{{user `vcenter_datacenter`}}",
       "insecure_connection": "true",
       "cluster": "{{user `vcenter_cluster`}}",
+      "host": "{{user `vcenter_host`}}",
       "folder": "{{user `vcenter_folder`}}",
       "datastore": "{{user `vcenter_datastore`}}",
       "network": "{{user `vcenter_network`}}",

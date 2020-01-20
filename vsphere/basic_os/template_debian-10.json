@@ -8,6 +8,7 @@
       "insecure_connection": "true",
       "datacenter": "{{user `vcenter_datacenter`}}",
       "cluster": "{{user `vcenter_cluster`}}",
+      "host": "{{user `vcenter_host`}}",
       "folder": "{{user `vcenter_folder`}}",
       "datastore": "{{user `vcenter_datastore`}}",
       "network": "{{user `vcenter_network`}}",
@@ -31,7 +32,7 @@
       "iso_paths": [
         "[FreeNas] Images/debian-10.0.0-amd64-xfce-CD-1.iso"
       ],
-      "http_ip": "10.20.0.108",
+      "http_ip": "10.20.0.110",
       "http_directory": "{{template_dir}}/http/debian",
 
       "boot_wait": "5s",
