@@ -60,7 +60,7 @@
       "communicator": "ssh",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
-      "create_snapshot": "true",
+      "create_snapshot": "false",
       "convert_to_template": "true"
     }
   ],
