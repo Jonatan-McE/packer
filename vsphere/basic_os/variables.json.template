@@ -8,8 +8,10 @@
     "vcenter_folder": "<folder>",
     "vcenter_datastore": "<datastore>",
     "vcenter_network": "<network>",
+    "iso_path": "<iso path>",
     "ssh_username": "<ssh username>",
     "ssh_password": "<ssh password>",
     "winrm_username": "<windows administrator username>",
     "winrm_password": "<windows administrator password>"
+    "local_ip": "<x.x.x.x>"
 }
