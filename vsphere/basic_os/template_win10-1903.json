@@ -8,6 +8,7 @@
       "datacenter": "{{user `vcenter_datacenter`}}",
       "insecure_connection": "true",
       "cluster": "{{user `vcenter_cluster`}}",
+      "host": "{{user `vcenter_host`}}",
       "folder": "{{user `vcenter_folder`}}",
       "datastore": "{{user `vcenter_datastore`}}",
       "network": "{{user `vcenter_network`}}",
@@ -26,8 +27,8 @@
       "network_card": "vmxnet3",  
 
       "iso_paths": [
-        "[FreeNas] Images/SW_DVD9_Win_Pro_10_1903_64BIT_English_Pro_Ent_EDU_N_MLF_X22-02890.ISO",
-        "[FreeNas] Images/windows.iso"
+        "{{iso_path}}/SW_DVD9_Win_Pro_10_1903_64BIT_English_Pro_Ent_EDU_N_MLF_X22-02890.ISO",
+        "{{iso_path}}/windows.iso"
       ],
       "floppy_files": [
         "{{template_dir}}/floppy/win10-1903/autounattend.xml",

@@ -8,6 +8,7 @@
       "datacenter": "{{user `vcenter_datacenter`}}",
       "insecure_connection": "true",
       "cluster": "{{user `vcenter_cluster`}}",
+      "host": "{{user `vcenter_host`}}",
       "folder": "{{user `vcenter_folder`}}",
       "datastore": "{{user `vcenter_datastore`}}",
       "network": "{{user `vcenter_network`}}",
@@ -26,8 +27,8 @@
       "network_card": "vmxnet3",  
 
       "iso_paths": [
-        "[FreeNas] Images/SW_DVD9_Win_Server_STD_CORE_2019_1809.1_64Bit_English_DC_STD_MLF_X22-02970.ISO",
-        "[FreeNas] Images/windows.iso"
+        "{{iso_path}}/SW_DVD9_Win_Server_STD_CORE_2019_1809.1_64Bit_English_DC_STD_MLF_X22-02970.ISO",
+        "{{iso_path}}/windows.iso"
       ],
       "floppy_files": [
         "{{template_dir}}/floppy/winsrv-2019/autounattend.xml",
