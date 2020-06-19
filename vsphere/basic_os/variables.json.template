@@ -8,8 +8,17 @@
     "vcenter_folder": "<folder>",
     "vcenter_datastore": "<datastore>",
     "vcenter_network": "<network>",
+    "iso_path": "<datastore>",
+    "iso_file_centos": "CentOS",
+    "iso_file_debian": "Debian",
+    "iso_file_rhel": "RHEL",
+    "iso_file_ubuntu": "Ubuntu",
+    "iso_file_win": "Win_Pro_10",
+    "iso_file_winsrv": "Win_Server_2019",
     "ssh_username": "<ssh username>",
     "ssh_password": "<ssh password>",
+    "ssh_key": "",
     "winrm_username": "<windows administrator username>",
     "winrm_password": "<windows administrator password>"
+    "local_ip": "<x.x.x.x>"
 }

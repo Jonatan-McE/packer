@@ -30,9 +30,11 @@
       "network_card": "vmxnet3",
 
       "iso_paths": [
-        "[FreeNas] Images/CentOS-8-x86_64-1905-dvd1.iso"
+        "{{user `iso_path`}}/{{user `iso_file_centos`}}"
       ],
-      "http_ip": "10.20.0.110",
+      "http_ip": "{{user `local_ip`}}",
+      "http_port_min": 8000,
+      "http_port_max": 8000,
       "http_directory": "{{template_dir}}/http/centos",
       
       "boot_wait": "5s",
@@ -45,7 +47,7 @@
       "communicator": "ssh",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
-      "create_snapshot": "true",
+      "create_snapshot": "false",
       "convert_to_template": "true"
     }
   ],
@@ -53,7 +55,13 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": ["echo 'template build complete'"]
+      "inline": [
+        "mkdir ~/.ssh",
+        "chmod 740 ~/.ssh",
+        "echo '{{user `ssh_key`}}' >> ~/.ssh/authorized_keys",
+        "chmod 640 ~/.ssh/authorized_keys",
+        "echo 'template build complete'"
+      ]
     }
   ]
 
