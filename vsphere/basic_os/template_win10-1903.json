@@ -12,8 +12,8 @@
       "folder": "{{user `vcenter_folder`}}",
       "datastore": "{{user `vcenter_datastore`}}",
       "network": "{{user `vcenter_network`}}",
-      "vm_name": "TEMPLATE_WIN10-1903",
-      "notes": "Windows 10 1903 Template created with Packer",
+      "vm_name": "TEMPLATE_WIN10-2004",
+      "notes": "Windows 10 2004 Template created with Packer",
 
       "CPUs": 2,
       "cpu_cores": 2,
@@ -22,18 +22,18 @@
       "disk_size": 32768,
       "boot_order": "disk,cdrom",
       "guest_os_type": "windows9_64Guest",
-      "disk_controller_type": "lsilogic-sas",
-      "disk_thin_provisioned": true,
+      "disk_controller_type": "pvscsi",
+      "disk_thin_provisioned": false,
       "network_card": "vmxnet3",  
 
       "iso_paths": [
-        "{{iso_path}}/SW_DVD9_Win_Pro_10_1903_64BIT_English_Pro_Ent_EDU_N_MLF_X22-02890.ISO",
+        "{{user `iso_path`}}/{{user `iso_file_win`}}",
         "{{iso_path}}/windows.iso"
       ],
       "floppy_files": [
-        "{{template_dir}}/floppy/win10-1903/autounattend.xml",
-        "{{template_dir}}/floppy/win10-1903/setup.ps1",
-        "{{template_dir}}/floppy/win10-1903/vmtools.cmd"
+        "{{template_dir}}/floppy/win10/autounattend.xml",
+        "{{template_dir}}/floppy/win10/setup.ps1",
+        "{{template_dir}}/floppy/win10/vmtools.cmd"
       ],
 
       "communicator": "winrm",

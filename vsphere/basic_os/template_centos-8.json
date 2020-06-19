@@ -30,7 +30,7 @@
       "network_card": "vmxnet3",
 
       "iso_paths": [
-        "{{user `iso_path`}}/CentOS-8-x86_64-1905-dvd1.iso"
+        "{{user `iso_path`}}/{{user `iso_file_centos`}}"
       ],
       "http_ip": "{{user `local_ip`}}",
       "http_port_min": 8000,
@@ -58,9 +58,7 @@
       "inline": [
         "mkdir ~/.ssh",
         "chmod 740 ~/.ssh",
-        "echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD7hjlrQ4ConpUoHlvNZhpCJQ+DBgZxKVg4MgNBeK5YjCVRHS9yvg7QTX+iSaToJ3/s+fWYE+8ffkyyrVXUf6hl70vBD/K8ov/5c5uTxQK6a3rN0uku7iIMAQmJuDWeGtOge8mkBHYl/fLK3alMW4XhQCidvszedC2eoltzwxsrwsCt/efOViAwRGiTelrSGPRiTirGBdnlZjMpE0g4JQjUWHOHKrFXXYN2lpp/d762FMc+rSxc2vasi2/D62AS7QNHQxrY97XB8Y2Pt6zBOoJV2mAn9cJX9drfk+8C1XIk5ygSNMjqK3b51DvZx1ODaHW1ftRElIXpCUyFgvAPnolD' >> ~/.ssh/authorized_keys",
-        "echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvsHx7rNkzeqwGFDkhsWKDkhG5CeSI7s4XrVq/Dx21AWmQq8+FeZYvcJfF4Qn3cnZYjzq0tnZY6nS3BJhhmCslErzGv5AJNs7FAsg3YmUBXIALOR+KwS0nvJf7wYFNLYpMz2Wt49G60h4G5y9dhKLKwwtmcwW8YD2T3AFhA4KoE9pUTCVRnupCyuiID/4dxYt3/4vc1Pgzfnay28LIU74kbpsIgIOiCKbgh9yjjG68cwGeJEtRv9XDor0SwJWQqhO85TRCxxe6m07r5l/zwKRg5x+V4yNh3cpXNL32w4lMzlm6xAcMvr8lalwHvB3rocULNyvvnbH2VjNmahYKpJAR' >> ~/.ssh/authorized_keys",
-        "echo 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAkydb1zeVq5VhgYl2SxGgpNsfxOnD08y2UQm15XKhEJBqge9GRINM3ZZPfBHVCLMVDc2xEWsHiRrqUKkfdpk6tj6ZmW1aJvXoP7KZMi7QLAyeKkm62sKVModL8wex5Gw5MiYcjuQ7zJojmQKIHYaA7d7rbswQN+VVqY6NJOY9ydmbrf0EPp+dvg2FkjeMX1FdTPUNXfPmWqH0dbTLR3RnqLaVcGjZm8HvaFGhdlzgQvVvrhRLJRlQVcvm/fGf4dFmdsPfhAlb14sEaHke+ERLVbhoZQAlP1ZrjGjs3x9FBeotEwh3jqWoNRCPsD5zEdocAll9LTapRNC4xfheHciXzw==' >> ~/.ssh/authorized_keys",
+        "echo '{{user `ssh_key`}}' >> ~/.ssh/authorized_keys",
         "chmod 640 ~/.ssh/authorized_keys",
         "echo 'template build complete'"
       ]

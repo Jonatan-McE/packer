@@ -22,12 +22,12 @@
       "disk_size": 32768,
       "boot_order": "disk,cdrom",
       "guest_os_type": "windows9Server64Guest",
-      "disk_controller_type": "lsilogic-sas",
-      "disk_thin_provisioned": true,
+      "disk_controller_type": "pvscsi",
+      "disk_thin_provisioned": false,
       "network_card": "vmxnet3",  
 
       "iso_paths": [
-        "{{iso_path}}/SW_DVD9_Win_Server_STD_CORE_2019_1809.1_64Bit_English_DC_STD_MLF_X22-02970.ISO",
+        "{{iso_path}}/{{user `iso_file_winsrv`}}",
         "{{iso_path}}/windows.iso"
       ],
       "floppy_files": [
