@@ -60,6 +60,9 @@
         "chmod 740 ~/.ssh",
         "echo '{{user `ssh_key`}}' >> ~/.ssh/authorized_keys",
         "chmod 640 ~/.ssh/authorized_keys",
+        "sudo yum install cloud-init -y -q",
+        "sudo sed -i 's/^disable_root.*/disable_root: 0/; s/^ssh_pwauth.*/ssh_pwauth: 1/' /etc/cloud/cloud.cfg",
+        "sudo curl -sSL https://raw.githubusercontent.com/vmware/cloud-init-vmware-guestinfo/master/install.sh | sudo sh -",
         "echo 'template build complete'"
       ]
     }
