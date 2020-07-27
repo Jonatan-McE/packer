@@ -11,7 +11,12 @@
       "host": "{{user `vcenter_host`}}",
       "folder": "{{user `vcenter_folder`}}",
       "datastore": "{{user `vcenter_datastore`}}",
-      "network": "{{user `vcenter_network`}}",
+      "network_adapters": [
+        {
+          "network": "{{user `vcenter_network`}}",
+          "network_card": "vmxnet3"
+        }
+      ],
       "vm_name": "TEMPLATE_CENTOS8",
       "notes": "CentOS 8 Template created with Packer",
 
@@ -22,12 +27,15 @@
       "RAM": 2048,
       "RAM_reserve_all": false,
 
-      "disk_size": 32768,
+      "storage": [
+        {
+          "disk_size": 32768,
+          "disk_thin_provisioned": true
+        }
+      ],
       "boot_order": "disk,cdrom",
       "disk_controller_type": "pvscsi",
-      "disk_thin_provisioned": true,
 
-      "network_card": "vmxnet3",
 
       "iso_paths": [
         "{{user `iso_path`}}/{{user `iso_file_centos`}}"
@@ -60,9 +68,6 @@
         "chmod 740 ~/.ssh",
         "echo '{{user `ssh_key`}}' >> ~/.ssh/authorized_keys",
         "chmod 640 ~/.ssh/authorized_keys",
-        "sudo yum install cloud-init -y -q",
-        "sudo sed -i 's/^disable_root.*/disable_root: 0/; s/^ssh_pwauth.*/ssh_pwauth: 1/' /etc/cloud/cloud.cfg",
-        "sudo curl -sSL https://raw.githubusercontent.com/vmware/cloud-init-vmware-guestinfo/master/install.sh | sudo sh -",
         "echo 'template build complete'"
       ]
     }
