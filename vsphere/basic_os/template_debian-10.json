@@ -37,7 +37,7 @@
       "disk_controller_type": "pvscsi",
 
       "iso_paths": [
-        "{{user `iso_path`}}/{{user `iso_file_debian`}}"
+        "{{user `iso_path`}}/{{user `iso_file_debian10`}}"
       ],
       "http_ip": "{{user `local_ip`}}",
       "http_port_min": 8000,
