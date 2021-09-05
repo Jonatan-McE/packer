@@ -11,7 +11,12 @@
       "host": "{{user `vcenter_host`}}",
       "folder": "{{user `vcenter_folder`}}",
       "datastore": "{{user `vcenter_datastore`}}",
-      "network": "{{user `vcenter_network`}}",
+      "network_adapters": [
+        {
+          "network": "{{user `vcenter_network`}}",
+          "network_card": "vmxnet3"
+        }
+      ],
       "vm_name": "TEMPLATE_WIN10-2004",
       "notes": "Windows 10 2004 Template created with Packer",
 
@@ -19,12 +24,17 @@
       "cpu_cores": 2,
       "RAM": 4096,
       "RAM_reserve_all": true,
-      "disk_size": 32768,
+      
+      "storage": [
+        {
+          "disk_size": 32768,
+          "disk_thin_provisioned": true
+        }
+      ],
       "boot_order": "disk,cdrom",
       "guest_os_type": "windows9_64Guest",
       "disk_controller_type": "pvscsi",
-      "disk_thin_provisioned": false,
-      "network_card": "vmxnet3",  
+
 
       "iso_paths": [
         "{{user `iso_path`}}/{{user `iso_file_win`}}",

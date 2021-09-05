@@ -11,7 +11,12 @@
       "host": "{{user `vcenter_host`}}",
       "folder": "{{user `vcenter_folder`}}",
       "datastore": "{{user `vcenter_datastore`}}",
-      "network": "{{user `vcenter_network`}}",
+      "network_adapters": [
+        {
+          "network": "{{user `vcenter_network`}}",
+          "network_card": "vmxnet3"
+        }
+      ],
       "vm_name": "TEMPLATE_CENTOS8",
       "notes": "CentOS 8 Template created with Packer",
 
@@ -22,20 +27,23 @@
       "RAM": 2048,
       "RAM_reserve_all": false,
 
-      "disk_size": 32768,
+      "storage": [
+        {
+          "disk_size": 32768,
+          "disk_thin_provisioned": true
+        }
+      ],
       "boot_order": "disk,cdrom",
       "disk_controller_type": "pvscsi",
-      "disk_thin_provisioned": true,
 
-      "network_card": "vmxnet3",
 
       "iso_paths": [
-        "{{user `iso_path`}}/{{user `iso_file_centos`}}"
+        "{{user `iso_path`}}/{{user `iso_file_centos8`}}"
       ],
       "http_ip": "{{user `local_ip`}}",
       "http_port_min": 8000,
       "http_port_max": 8000,
-      "http_directory": "{{template_dir}}/http/centos",
+      "http_directory": "{{template_dir}}/http/centos8",
       
       "boot_wait": "5s",
       "boot_command":[

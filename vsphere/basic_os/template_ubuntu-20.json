@@ -11,7 +11,12 @@
       "host": "{{user `vcenter_host`}}",
       "folder": "{{user `vcenter_folder`}}",
       "datastore": "{{user `vcenter_datastore`}}",
-      "network": "{{user `vcenter_network`}}",
+      "network_adapters": [
+        {
+          "network": "{{user `vcenter_network`}}",
+          "network_card": "vmxnet3"
+        }
+      ],
       "vm_name": "TEMPLATE_UBUNTU2004",
       "notes": "Ubuntu 20.04 Template created with Packer",
 
@@ -22,12 +27,14 @@
       "RAM": 2048,
       "RAM_reserve_all": false,
 
-      "disk_size": 32768,
+      "storage": [
+        {
+          "disk_size": 32768,
+          "disk_thin_provisioned": true
+        }
+      ],
       "boot_order": "disk,cdrom",
       "disk_controller_type": "pvscsi",
-      "disk_thin_provisioned": true,
-
-      "network_card": "vmxnet3",
   
       "iso_paths": [
         "{{user `iso_path`}}/{{user `iso_file_ubuntu`}}"
