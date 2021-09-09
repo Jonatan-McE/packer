@@ -1,0 +1,31 @@
+#cloud-config
+autoinstall:
+  version: 1
+  early-commands:
+    - 'systemctl stop ssh'
+  identity:
+    hostname: ubuntu-2004
+    password: $6$qwerty$c//EXt0pSKAC83Wjizdr520OiuNmlHmZJALyzfBn/wAwR1FFMfPYrhYwZEl2yKNcBR.T0oASRtgB6nkNdaHSX0
+    username: automation
+  storage:
+    layout:
+      name: direct
+  keyboard:
+    layout: en
+    variant: us
+  locale: en_US
+  ssh:
+    install-server: true
+    allow-pw: true
+    authorized-keys:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDI0tBnPvJ6K2k7moaE8KBsoZS4RZ4pFTz2ZbxeRbJhI1I55xPK62IbFIhTVCoz2rv9vnrXCiNCCY7fjETOx1vuxSjRY5HthGvHgeXDm6SY0HsZyTavAKdG1ymo7h0e9pobGGTlqAUW60axRDC5Cq1YKkZaQ3PXLR08uEeQqzd1cm9yjocTWJOaR2Rt7kuJKA25WlWU/YrHcOWlFmlNNn/2FjMemAUJWMVCO//IHMHbfJbOWE2YmejSC2YE6Rz1W//F0VM2zemFr2jFXLjeSf2LZqZuh36wG2tUzn21OERblmilZG4JXsLecEIyR5ds+DAN4yiXMObplxkQUPzaPd4t7SqMy8brbsfEnfia7ind0gmy3zJ6FCpSdkNlcU+E9Yy77Ei2jSH3qgYy2DGZDrd+Z4RV38+y1blIErjy/NnCxXPwmYM9vRUx7j12rbca4XrgXZfqHmyVb6I13ilmaaR8NhS+4jFSN/eJD38rhVcQAWT0wVMFDYyj8KRRQILolH0= jonatan@MacBookssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDI0tBnPvJ6K2k7moaE8KBsoZS4RZ4pFTz2ZbxeRbJhI1I55xPK62IbFIhTVCoz2rv9vnrXCiNCCY7fjETOx1vuxSjRY5HthGvHgeXDm6SY0HsZyTavAKdG1ymo7h0e9pobGGTlqAUW60axRDC5Cq1YKkZaQ3PXLR08uEeQqzd1cm9yjocTWJOaR2Rt7kuJKA25WlWU/YrHcOWlFmlNNn/2FjMemAUJWMVCO//IHMHbfJbOWE2YmejSC2YE6Rz1W//F0VM2zemFr2jFXLjeSf2LZqZuh36wG2tUzn21OERblmilZG4JXsLecEIyR5ds+DAN4yiXMObplxkQUPzaPd4t7SqMy8brbsfEnfia7ind0gmy3zJ6FCpSdkNlcU+E9Yy77Ei2jSH3qgYy2DGZDrd+Z4RV38+y1blIErjy/NnCxXPwmYM9vRUx7j12rbca4XrgXZfqHmyVb6I13ilmaaR8NhS+4jFSN/eJD38rhVcQAWT0wVMFDYyj8KRRQILolH0= jonatan@MacBook'
+  packages:
+    - open-vm-tools
+  user-data:
+    disable_root: false
+    timezone: Europe/Stockholm
+  late-commands:
+    - 'systemctl enable open-vm-tools'
+    - 'echo "automation ALL=(ALL) NOPASSWD: ALL" > /target/etc/sudoers.d/automation'
+    - 'chmod 440 /target/etc/sudoers.d/automation'
+    - 'sed -i "s/^disable_root.*/disable_root: 0/; s/^ssh_pwauth.*/ssh_pwauth: 1/; s/^disable_vmware_customization.*/disable_vmware_customization: true/" /target/etc/cloud/cloud.cfg'

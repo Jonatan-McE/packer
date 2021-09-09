@@ -1,0 +1,64 @@
+{
+  "builders": [
+    {
+      "type": "vsphere-iso",
+      "vcenter_server": "{{user `vcenter_server`}}",
+      "username": "{{user `vcenter_username`}}",
+      "password": "{{user `vcenter_password`}}",
+      "datacenter": "{{user `vcenter_datacenter`}}",
+      "insecure_connection": "true",
+      "cluster": "{{user `vcenter_cluster`}}",
+      "host": "{{user `vcenter_host`}}",
+      "folder": "{{user `vcenter_folder`}}",
+      "datastore": "{{user `vcenter_datastore`}}",
+      "network_adapters": [
+        {
+          "network": "{{user `vcenter_network`}}",
+          "network_card": "vmxnet3"
+        }
+      ],
+      "vm_name": "TEMPLATE_WIN10-2004",
+      "notes": "Windows 10 2004 Template created with Packer",
+
+      "CPUs": 2,
+      "cpu_cores": 2,
+      "RAM": 4096,
+      "RAM_reserve_all": true,
+
+      "storage": [
+        {
+          "disk_size": 32768,
+          "disk_thin_provisioned": true
+        }
+      ],
+      "boot_order": "disk,cdrom",
+      "guest_os_type": "windows9_64Guest",
+      "disk_controller_type": "pvscsi",
+
+      "iso_paths": [
+        "{{user `iso_path`}}",
+        "{{user `vmware_drivers_path`}}"
+      ],
+      "floppy_files": [
+        "{{template_dir}}/floppy/autounattend.xml",
+        "{{template_dir}}/floppy/setup.ps1",
+        "{{template_dir}}/floppy/vmtools.cmd"
+      ],
+
+      "communicator": "winrm",
+      "winrm_timeout": "60m",
+      "winrm_username": "{{user `winrm_username`}}",
+      "winrm_password": "{{user `winrm_password`}}",
+      "create_snapshot": "false",
+      "convert_to_template": "true"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "windows-shell",
+      "inline": ["dir c:\\"]
+    }
+  ]
+
+}
