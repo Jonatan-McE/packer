@@ -76,6 +76,11 @@
 
   "provisioners": [
     {
+      "type": "file",
+      "source": "files/interfaces",
+      "destination": "/tmp/"
+    },
+    {
       "type": "shell",
       "inline": [
         "mkdir ~/.ssh",
@@ -84,6 +89,9 @@
         "chmod 640 ~/.ssh/authorized_keys",
         "curl -sSL https://raw.githubusercontent.com/vmware/cloud-init-vmware-guestinfo/master/install.sh | sudo sh",
         "sudo cloud-init clean",
+        "sudo mv /tmp/interfaces /etc/network/",
+        "sudo chown root: /etc/network/interfaces",
+        "sudo chmod 644 /etc/network/interfaces",
         "echo 'template build complete'"
       ]
     }

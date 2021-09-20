@@ -70,7 +70,8 @@
       "type": "shell",
       "inline": [
         "curl -sSL 'https://raw.githubusercontent.com/vmware/cloud-init-vmware-guestinfo/master/install.sh' | sudo sh -",
-        "sudo rm /etc/cloud/cloud.cfg.d/99-installer.cfg",
+        "sudo mv /etc/cloud/cloud.cfg.d/99-installer.cfg /etc/cloud/cloud.cfg.d/99-installer.cfg.disabled",
+        "sudo mv /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg.disbled",
         "sudo cloud-init clean",
         "echo 'template build complete'"
       ]
