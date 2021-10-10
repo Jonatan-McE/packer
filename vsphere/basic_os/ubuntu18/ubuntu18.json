@@ -29,7 +29,7 @@
 
       "storage": [
         {
-          "disk_size": 32768,
+          "disk_size": 16384,
           "disk_thin_provisioned": true
         }
       ],
@@ -83,6 +83,7 @@
         "echo '{{user `ssh_key`}}' >> ~/.ssh/authorized_keys",
         "chmod 640 ~/.ssh/authorized_keys",
         "curl -sSL 'https://raw.githubusercontent.com/vmware/cloud-init-vmware-guestinfo/master/install.sh' | sudo sh",
+        "sudo rm -f /var/log/cloud-init*",
         "sudo cloud-init clean",
         "echo 'template build complete'"
       ]

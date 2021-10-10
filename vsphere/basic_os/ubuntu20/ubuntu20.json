@@ -29,7 +29,7 @@
 
       "storage": [
         {
-          "disk_size": 32768,
+          "disk_size": 16384,
           "disk_thin_provisioned": true
         }
       ],
@@ -72,6 +72,7 @@
         "curl -sSL 'https://raw.githubusercontent.com/vmware/cloud-init-vmware-guestinfo/master/install.sh' | sudo sh -",
         "sudo mv /etc/cloud/cloud.cfg.d/99-installer.cfg /etc/cloud/cloud.cfg.d/99-installer.cfg.disabled",
         "sudo mv /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg.disbled",
+        "sudo rm -f /var/log/cloud-init*",
         "sudo cloud-init clean",
         "echo 'template build complete'"
       ]

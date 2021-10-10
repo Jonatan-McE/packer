@@ -1,0 +1,10 @@
+{
+    "packages": [
+                 "minimal",
+                 "linux",
+                 "sudo",
+                 "nano",
+                 "python3",
+                 "initramfs"
+                 ]
+}

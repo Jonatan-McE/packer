@@ -1,0 +1,20 @@
+{
+    "hostname": "photonos4",
+    "password": {
+        "crypted": true,
+        "text": "!"
+    },
+    "bootmode": "bios",
+    "disk": "/dev/sda",
+    "linux_flavor": "linux",
+    "packagelist_file": "packages-minimal.json",
+    "postinstall": [
+        "#!/bin/sh",
+        "useradd -m automation",
+        "echo 'automation ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/automation",
+        "chmod 440 /etc/sudoers.d/automation",
+        "sed -i 's|automation:!|automation:$6$qwert$vFxEWMuuRHBN8ZJTBUaSietfyj1l63GS5knVMJ78MG17gfnR6m9gUTaBXa7G/CvwYX729grlrkSD8edPt0x2d0|' /etc/shadow",
+        "systemctl restart sshd.service",
+        "mv /etc/cloud/cloud.cfg.d/99-disable-networking-config.cfg /etc/cloud/cloud.cfg.d/99-disable-networking-config.cfg.disabled"
+    ]
+}

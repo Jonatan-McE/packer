@@ -22,7 +22,7 @@ autoinstall:
   packages:
     - open-vm-tools
   user-data:
-    disable_root: false
+    disable_root: true
     timezone: Europe/Stockholm
   late-commands:
     - 'systemctl enable open-vm-tools'
