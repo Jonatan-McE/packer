@@ -7,7 +7,7 @@
     "bootmode": "bios",
     "disk": "/dev/sda",
     "linux_flavor": "linux",
-    "packagelist_file": "packages-minimal.json",
+    "packagelist_file": "packages_minimal.json",
     "postinstall": [
         "#!/bin/sh",
         "useradd -m automation",

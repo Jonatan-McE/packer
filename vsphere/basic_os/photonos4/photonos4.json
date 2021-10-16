@@ -36,6 +36,10 @@
       "boot_order": "disk,cdrom",
       "disk_controller_type": "pvscsi",
 
+      "configuration_parameters": {
+        "guestinfo.metadata.encoding": "base64",
+        "guestinfo.metadata": "bmV0d29yazoge2NvbmZpZzogZGlzYWJsZWR9Cg=="
+      },
 
       "iso_paths": [
         "{{user `iso_path`}}"
