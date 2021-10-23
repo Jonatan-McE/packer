@@ -1,0 +1,24 @@
+# Variables...
+vcenter_server = "vc.example.com"
+vcenter_username = "administrator@vsphere.local"
+vcenter_password = "P@ssw0rd!"
+vcenter_datacenter = "Datacenter"
+vcenter_cluster = "Main"
+vcenter_host = "10.0.0.10"
+vcenter_folder = "Templates"
+vcenter_datastore = "Datastore-ESX01-Local-ESXi"
+vcenter_network = "Private"
+vm_name = "TEMPLATE_RHEL8"
+vm_notes = "RHEL 8 Template created with Packer"
+vm_guest_os_type = "rhel8_64Guest"
+vm_guestinfo_metadata = "network: {config: disabled}"
+iso_path = "[TrueNas-Templates] /Images/rhel-8.4-x86_64-dvd.iso"
+ssh_username = "automation"
+ssh_password = "P@ssw0rd!"
+ssh_keys = ""
+boot_command = [
+  "<up><wait><tab> ",
+  "inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg",
+  "<tab><enter>",
+]
+local_websrv_ip = "10.0.0.11"
