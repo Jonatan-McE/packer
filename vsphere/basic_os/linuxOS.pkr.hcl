@@ -1,5 +1,24 @@
+variable "vcenter_server" {type = string}
+variable "vcenter_username" {type = string}
+variable "vcenter_password" {type = string}
+variable "vcenter_datacenter" {type = string}
+variable "vcenter_cluster" {type = string}
+variable "vcenter_host" {type = string}
+variable "vcenter_folder" {type = string}
+variable "vcenter_datastore" {type = string}
+variable "vcenter_network" {type = string}
+variable "iso_path" {type = string}
+variable "vm_name" {type = string}
+variable "vm_notes" {type = string}
+variable "vm_guest_os_type" {type = string}
+variable "vm_guestinfo_metadata" {type = string}
+variable "ssh_username" {type = string}
+variable "ssh_password" {type = string}
+variable "ssh_keys" {type = string}
+variable "boot_command" {}
+variable "local_websrv_ip" {type = string}
 
-source "vsphere-iso" "create_vm_template" {
+source "vsphere-iso" "vm_template" {
   CPUs            = 2
   RAM             = 2048
   RAM_reserve_all = false
@@ -8,10 +27,10 @@ source "vsphere-iso" "create_vm_template" {
   boot_wait       = "5s"
   cluster         = "${var.vcenter_cluster}"
   communicator    = "ssh"
-  configuration_parameters = {
-    "guestinfo.metadata" = base64encode("${var.vm_guestinfo_metadata}")
-    "guestinfo.metadata.encoding" = "base64"
-  }
+#  configuration_parameters = {
+#    "guestinfo.metadata" = base64encode("${var.vm_guestinfo_metadata}")
+#    "guestinfo.metadata.encoding" = "base64"
+#  }
   convert_to_template  = "true"
   cpu_cores            = 2
   create_snapshot      = "false"
@@ -47,7 +66,7 @@ source "vsphere-iso" "create_vm_template" {
 }
 
 build {
-  sources = ["source.vsphere-iso.create_vm_template"]
+  sources = ["source.vsphere-iso.vm_template"]
 
   provisioner "shell" {
     execute_command = "sudo -E bash '{{ .Path }}'"
@@ -55,24 +74,3 @@ build {
   }
 
 }
-
-
-variable "vcenter_server" {type = string}
-variable "vcenter_username" {type = string}
-variable "vcenter_password" {type = string}
-variable "vcenter_datacenter" {type = string}
-variable "vcenter_cluster" {type = string}
-variable "vcenter_host" {type = string}
-variable "vcenter_folder" {type = string}
-variable "vcenter_datastore" {type = string}
-variable "vcenter_network" {type = string}
-variable "iso_path" {type = string}
-variable "vm_name" {type = string}
-variable "vm_notes" {type = string}
-variable "vm_guest_os_type" {type = string}
-variable "vm_guestinfo_metadata" {type = string}
-variable "ssh_username" {type = string}
-variable "ssh_password" {type = string}
-variable "ssh_keys" {type = string}
-variable "boot_command" {}
-variable "local_websrv_ip" {type = string}

@@ -22,3 +22,5 @@ ln -s /etc/machine-id /var/lib/dbus/machine-id
 echo "Resetting Cloud-Init"
 rm -f /var/log/cloud-init*
 cloud-init clean -s -l
+
+sed -i "s/^ssh_pwauth.*/ssh_pwauth: 1/; s/^disable_vmware_customization.*/disable_vmware_customization: false/" /etc/cloud/cloud.cfg

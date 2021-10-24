@@ -15,6 +15,6 @@
         "chmod 440 /etc/sudoers.d/automation",
         "sed -i 's|automation:!|automation:$6$qwert$vFxEWMuuRHBN8ZJTBUaSietfyj1l63GS5knVMJ78MG17gfnR6m9gUTaBXa7G/CvwYX729grlrkSD8edPt0x2d0|' /etc/shadow",
         "systemctl restart sshd.service",
-        "ls -d /etc/cloud/cloud.cfg.d/* | grep .cfg | grep -v 05_logging | xargs -I % mv % %.disabled"
+        "ls -d /etc/cloud/cloud.cfg.d/*.cfg | grep -v 05_logging | xargs -I % mv % %.disabled"
     ]
 }
