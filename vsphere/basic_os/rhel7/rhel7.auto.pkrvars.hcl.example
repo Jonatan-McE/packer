@@ -21,4 +21,4 @@ boot_command = [
   "inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg",
   "<tab><enter>",
 ]
-local_websrv_ip = "10.0.0.11"
+packer_websrv_bindip = "10.0.0.11"

@@ -21,4 +21,4 @@ boot_command = [
   "autoinstall ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ",
   "<enter>",
 ]
-local_websrv_ip = "10.0.0.11"
+packer_websrv_bindip = "10.0.0.11"

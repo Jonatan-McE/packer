@@ -12,7 +12,7 @@ vm_name = "TEMPLATE_DEBIAN10"
 vm_notes = "Debian 10 Template created with Packer"
 vm_guest_os_type = "debian10_64Guest"
 vm_guestinfo_metadata = "network: {config: disabled}"
-iso_path = "[TrueNas-Templates] /Images/debian-10.10.0-amd64-netinst.iso"
+iso_path = "[TrueNas-Templates] /Images/debian-10.11.0-amd64-netinst.iso"
 ssh_username = "automation"
 ssh_password = "P@ssw0rd!"
 ssh_keys = ""
@@ -34,4 +34,4 @@ boot_command = [
   " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg",
   "<enter>",
   ]
-local_websrv_ip = "10.0.0.11"
+packer_websrv_bindip = "10.0.0.11"

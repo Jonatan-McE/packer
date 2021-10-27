@@ -12,7 +12,7 @@ vm_name = "TEMPLATE_UBUNTU18"
 vm_notes = "Ubuntu 18.04 Template created with Packer"
 vm_guest_os_type = "ubuntu64Guest"
 vm_guestinfo_metadata = "network: {config: disabled}"
-iso_path = "[TrueNas-Templates] /Images/ubuntu-18.04.5-server-amd64.iso"
+iso_path = "[TrueNas-Templates] /Images/ubuntu-18.04.6-live-server-amd64.iso"
 ssh_username = "automation"
 ssh_password = "P@ssw0rd!"
 ssh_keys = ""
@@ -24,4 +24,4 @@ boot_command = [
     " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg",
     "<enter>"
   ]
-local_websrv_ip = "10.0.0.11"
+packer_websrv_bindip = "10.0.0.11"
