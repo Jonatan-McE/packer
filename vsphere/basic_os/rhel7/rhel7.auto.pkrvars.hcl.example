@@ -17,8 +17,8 @@ ssh_username = "automation"
 ssh_password = "P@ssw0rd!"
 ssh_keys = ""
 boot_command = [
-  "<up><wait><tab> ",
-  "inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg",
+  "<up><wait><tab>",
+  " inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg",
   "<tab><enter>",
 ]
 packer_websrv_bindip = "10.0.0.11"

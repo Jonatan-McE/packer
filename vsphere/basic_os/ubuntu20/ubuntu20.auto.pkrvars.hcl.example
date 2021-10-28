@@ -17,8 +17,8 @@ ssh_username = "automation"
 ssh_password = "P@ssw0rd!"
 ssh_keys = ""
 boot_command = [
-  "<enter><enter><f6><esc><wait> ",
-  "autoinstall ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ",
+  "<enter><enter><f6><esc><wait>",
+  " autoinstall ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/",
   "<enter>",
 ]
 packer_websrv_bindip = "10.0.0.11"

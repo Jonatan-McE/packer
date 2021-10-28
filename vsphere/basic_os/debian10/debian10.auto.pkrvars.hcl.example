@@ -21,7 +21,7 @@ boot_command = [
   "install",
   " auto",
   " netcfg/get_hostname=DEBIAN10",
-  " netcfg/get_domain=littleglitch.com",
+  " netcfg/get_domain=example.com",
   " fb=false",
   " debian-installer=en_US.UTF-8",
   " locale=en_US.UTF-8",
